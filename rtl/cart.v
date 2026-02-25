@@ -408,7 +408,7 @@ assign cram_rd = cart_rd & is_cram_addr;
 assign cram_wr = sleep_savestate ? Savestate_CRAMRWrEn : mbc_cram_wr || (cart_wr & is_cram_addr & mbc_ram_enable);
 
 wire [16:0] cram_addr = sleep_savestate ? Savestate_CRAMAddr[16:0] : mbc_cram_addr;
-wire [7:0] cram_di = sleep_savestate ? Savestate_CRAMWriteData : mbc_cram_wr ? mbc_cram_wr_do : cart_di;
+wire [7:0] cram_di = sleep_savestate ? Savestate_CRAMWriteData : mbc_cram_wr ? mbc_cram_wr_do : (mbc2 ? {4'hF, cart_di[3:0]} : cart_di);
 
 // RAM size
 assign ram_mask_file =              // 0 - no ram

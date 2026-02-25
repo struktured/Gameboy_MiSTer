@@ -1,0 +1,4 @@
+*.vcd
+mbc2_standalone
+mbc2_cram_fixed
+mbc2_cram_unfixed
